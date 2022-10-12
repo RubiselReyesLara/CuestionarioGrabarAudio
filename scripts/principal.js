@@ -8,7 +8,7 @@ let gumStream;
 let blobAudio = null;
 let temporizador;
 
-let id_usuario = 'usuario';
+let id_usuario = 'default';
 let barraTemporizador = null;
 let porcentaje;
 
@@ -18,7 +18,11 @@ let enviar;
 
 let btn_eliminar;
 
+let intervalo = null;
+let segundosBarraProgreso = 0;
+
 cargarComponentes();
+
 
 function cargarComponentes(){
     if(indexPregunta < 5){
@@ -58,16 +62,11 @@ function grabarAudio(){
         (stream)=>{
             audioContext = new AudioContext();
             gumStream = stream;
-
             entrada = audioContext.createMediaStreamSource(stream);
-
             grabacion = new Recorder(entrada, {
                 numChannels: 1
             });
-
             grabacion.record();
-            console.log('comenzo...');
-
             temporizador = setTimeout(() => {
                 detenerGrabacion();
             }, 31000); // TIEMPO DE GRABACION
@@ -76,10 +75,10 @@ function grabarAudio(){
 
 }
 
+
 function detenerGrabacion(){
     detener.disabled = true;
     enviar.disabled = false;
-
 
     grabacion.stop();
     gumStream.getAudioTracks()[0].stop();
@@ -88,6 +87,7 @@ function detenerGrabacion(){
     clearInterval(intervalo);
     clearTimeout(temporizador);
 }
+
 
 function mostrarAudio(blob){
     blobAudio = blob;
@@ -115,6 +115,7 @@ function mostrarAudio(blob){
     div_audio.append(btn_eliminar);
     div_audio.append(audio);
 }
+
 
 function guardarAudio(){
     if(confirm('¿Esta seguro de guardar la respuesta de la pregunta ' + (indexPregunta + 1) + '?')){
@@ -144,6 +145,7 @@ function guardarAudio(){
     }
 }
 
+
 function eliminar(){
     grabar.disabled = false;
     detener.disabled = true;
@@ -158,9 +160,6 @@ function eliminar(){
     document.getElementById('audioResultado' + indexPregunta).innerHTML = '';
     blobAudio = null;
 }
-
-let intervalo = null;
-let segundosBarraProgreso = 0;
 
 
 function encenderBarraProgreso() {

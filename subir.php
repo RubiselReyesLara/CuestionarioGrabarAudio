@@ -1,7 +1,16 @@
 <?php
 
+// Checar si el servidor tiene la carpeta de respuestas
+$ruta = $_SERVER['DOCUMENT_ROOT'] . "/respuestasSubidas/";
+if(!file_exists($ruta)){
+    mkdir($_SERVER['DOCUMENT_ROOT'] . "/respuestasSubidas/");
+}
+
+
 if(isset($_POST)){
-    if(($id_usuario = $_POST['usuario'])=='usuario'){
+
+    // Si el usuario que viene el frontend es uno diferente al actual
+    if(($id_usuario = $_POST['usuario'])=='default'){
         $fi = new FilesystemIterator($_SERVER['DOCUMENT_ROOT'] . "/respuestasSubidas/", 
                              FilesystemIterator::SKIP_DOTS);
         $id_usuario = iterator_count($fi);
