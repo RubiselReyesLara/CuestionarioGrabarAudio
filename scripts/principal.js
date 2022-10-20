@@ -12,22 +12,43 @@ let id_usuario = 'usuario';
 let barraTemporizador = null;
 let porcentaje;
 
+let grabar;
+let detener;
+let enviar;
+
+let btn_eliminar;
+
 cargarControles();
 
 function cargarControles(){
     if(indexPregunta < 3){
 
-    document.getElementById('btn-grabar' + indexPregunta).addEventListener('click', grabarAudio);
-    document.getElementById('btn-detener' + indexPregunta).addEventListener('click', detenerGrabacion);
-    document.getElementById('btn-enviar'+ indexPregunta).addEventListener('click', guardarAudio);
+    grabar = document.getElementById('btn-grabar' + indexPregunta);
+    detener = document.getElementById('btn-detener' + indexPregunta);
+    enviar = document.getElementById('btn-enviar'+ indexPregunta);
+
+    grabar.addEventListener('click', grabarAudio);
+    detener.addEventListener('click', detenerGrabacion);
+    enviar.addEventListener('click', guardarAudio);
+
     barraTemporizador = document.getElementById("barra-progreso" + indexPregunta);
     porcentaje = document.getElementById('porcentaje'+indexPregunta);
     barraTemporizador.style.width = '0%';
-    
+
+    grabar.disabled = false;
+
+    } else {
+
+        document.getElementById('mensajeFinal').innerHTML = 
+        `Se completo el cuestionario. Usted fue el usuario #${id_usuario}`;
+
     }
 }
 
 function grabarAudio(){
+    grabar.disabled = true;
+    detener.disabled = false;
+
     encenderBarraProgreso();
     navigator.mediaDevices.getUserMedia({
         audio: true, video: false
@@ -54,6 +75,10 @@ function grabarAudio(){
 }
 
 function detenerGrabacion(){
+    detener.disabled = true;
+    enviar.disabled = false;
+
+
     grabacion.stop();
     gumStream.getAudioTracks()[0].stop();
     grabacion.exportWAV(mostrarAudio);
@@ -70,7 +95,7 @@ function mostrarAudio(blob){
     audio.controls = true;
     audio.src = url;
 
-    const btn_eliminar = document.createElement('button');
+    btn_eliminar = document.createElement('button');
     btn_eliminar.setAttribute('id', 'eliminar' + indexPregunta);
     btn_eliminar.addEventListener ("click", eliminar);
     btn_eliminar.innerHTML = 'X';
@@ -82,26 +107,37 @@ function mostrarAudio(blob){
 }
 
 function guardarAudio(){
-    if(typeof blobAudio != null){
-    const datos = new FormData();
-    datos.append('audio_data',blobAudio, indexPregunta);
-    datos.append('usuario', id_usuario);
-	  
-		  fetch('subir.php',{
-				method: 'POST',
-			    body: datos
-		  }).then(r => r.text()).then(data => {
-            console.log(data);
-            id_usuario = data;
-                });
-    } else {
-        alert('Ingrese su respuesta...');
+    if(confirm('¿Esta seguro de guardar la respuesta de la pregunta ' + (indexPregunta + 1) + '?')){
+        grabar.disabled = true;
+        detener.disabled = true;
+        enviar.disabled = true;
+        btn_eliminar.disabled = true;
+
+        if(typeof blobAudio != null){
+        const datos = new FormData();
+        datos.append('audio_data',blobAudio, indexPregunta);
+        datos.append('usuario', id_usuario);
+        
+            fetch('subir.php',{
+                    method: 'POST',
+                    body: datos
+            }).then(r => r.text()).then(data => {
+                console.log(data);
+                id_usuario = data;
+                    });
+        } else {
+            alert('Ingrese su respuesta...');
+        }
+        indexPregunta++;
+        cargarControles();
     }
-    indexPregunta++;
-    cargarControles();
 }
 
 function eliminar(){
+    grabar.disabled = false;
+    detener.disabled = true;
+    enviar.disabled = true;
+
     barraTemporizador.style.width = '0%';
     segundosBarraProgreso = 0;
 
@@ -123,7 +159,7 @@ function encenderBarraProgreso() {
 
     function avanzarProgreso(){
         if(width < 99){
-        width += 1.66;
+        width += 3.33;
         segundosBarraProgreso++;
         porcentaje.innerHTML = segundosBarraProgreso + 's';
         barraTemporizador.style.width = width + "%";

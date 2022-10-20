@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#div-cuerpo{
+    width: 70%;
+    padding: 5px;
+    background-color: red;
+    margin-top: 50px;
+}
+
+#divPregunta0, #divPregunta1, #divPregunta2 {
+    border: 4px solid black;
+    padding: 5px;
+}

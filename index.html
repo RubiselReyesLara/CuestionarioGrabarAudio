@@ -4,44 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
     <title>Cuestionario</title>
 </head>
 <body>
-    <span>Tienes un minuto para comentar su respuesta...</span>
-    <div id="divPregunta0">
+    <div id="div-cuerpo">
+        <span>Tiene 30 segundos para comentar su respuesta...</span>
+        <div id="divPregunta0">
 
-        <span>Mencione la edad de Gary: </span>
+            <span>Mencione la edad de Gary: </span>
 
-        <div id="myProgress">
-            <div id="barra-progreso0"><p id="porcentaje0">0%</p></div>
-          </div>
-        <input type="button" value="Grabar" id="btn-grabar0"/>
-        <input type="button" value="Detener" id="btn-detener0"/>
-        <input type="button" value="Enviar respuesta" id="btn-enviar0"/>
-        <div id="audioResultado0"></div>
+            <div id="myProgress">
+                <div id="barra-progreso0"><p id="porcentaje0">0%</p></div>
+            </div>
+            <input type="button" value="Grabar" id="btn-grabar0" disabled/>
+            <input type="button" value="Detener" id="btn-detener0" disabled/>
+            <input type="button" value="Enviar respuesta" id="btn-enviar0" disabled/>
+            <div id="audioResultado0"></div>
 
+        </div>
+
+        <div id="divPregunta1">
+
+            <span>Zabdy y Alan tienen un perrito llamado... : </span>
+
+            <div id="myProgress">
+                <div id="barra-progreso1"><p id="porcentaje1">0%</p></div>
+            </div>
+            <input type="button" value="Grabar" id="btn-grabar1" disabled/>
+            <input type="button" value="Detener" id="btn-detener1" disabled/>
+            <input type="button" value="Enviar respuesta" id="btn-enviar1" disabled/>
+            <div id="audioResultado1"></div>
+
+        </div>
+
+        <div id="divPregunta2">
+
+            <span>Gary es un ...: </span>
+
+            <div id="myProgress">
+                <div id="barra-progreso2"><p id="porcentaje2">0%</p></div>
+            </div>
+            <input type="button" value="Grabar" id="btn-grabar2" disabled/>
+            <input type="button" value="Detener" id="btn-detener2" disabled/>
+            <input type="button" value="Enviar respuesta" id="btn-enviar2" disabled/>
+            <div id="audioResultado2"></div>
+
+        </div>
+
+        <div id="completado">
+            <span id="mensajeFinal"></span>
+        </div>
     </div>
-
-    <div id="divPregunta1">
-
-        <span>Zabdy y Alan tienen un perrito llamado... : </span>
-        <input type="button" value="Grabar" id="btn-grabar1"/>
-        <input type="button" value="Detener" id="btn-detener1"/>
-        <input type="button" value="Enviar respuesta" id="btn-enviar1"/>
-        <div id="audioResultado1"></div>
-
-    </div>
-
-    <div id="divPregunta2">
-
-        <span>Gary es un ...: </span>
-        <input type="button" value="Grabar" id="btn-grabar2"/>
-        <input type="button" value="Detener" id="btn-detener2"/>
-        <input type="button" value="Enviar respuesta" id="btn-enviar2"/>
-        <div id="audioResultado2"></div>
-
-    </div>
-
     <!-- <script type="text/javascript" src="script.js"></script> -->
 
     <style>
@@ -50,13 +64,13 @@
           background-color: #ddd;
         }
         
-        #barra-progreso0 {
+        #barra-progreso0, #barra-progreso1, #barra-progreso2 {
           width: 1%;
           height: 30px;
           background-color: #04AA6D;
         }
 
-        #porcentaje0 {
+        #porcentaje0,#porcentaje1,#porcentaje2 {
             margin: 0;
             padding: 5px;
         }
