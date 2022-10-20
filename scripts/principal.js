@@ -18,10 +18,12 @@ let enviar;
 
 let btn_eliminar;
 
-cargarControles();
+cargarComponentes();
 
-function cargarControles(){
-    if(indexPregunta < 3){
+function cargarComponentes(){
+    if(indexPregunta < 5){
+
+    document.getElementById('divPregunta' + indexPregunta).style.backgroundColor = 'white';
 
     grabar = document.getElementById('btn-grabar' + indexPregunta);
     detener = document.getElementById('btn-detener' + indexPregunta);
@@ -68,7 +70,7 @@ function grabarAudio(){
 
             temporizador = setTimeout(() => {
                 detenerGrabacion();
-            }, 61000);
+            }, 31000); // TIEMPO DE GRABACION
 
         });
 
@@ -100,6 +102,14 @@ function mostrarAudio(blob){
     btn_eliminar.addEventListener ("click", eliminar);
     btn_eliminar.innerHTML = 'X';
 
+    btn_eliminar.style.backgroundColor = '#f44336';
+    btn_eliminar.style.textDecoration = 'none';
+    btn_eliminar.style.border = 'none';
+    
+    btn_eliminar.style.borderRadius = '50%';
+    btn_eliminar.style.width = '30px';
+    btn_eliminar.style.height = '30px';
+    
     const div_audio = document.getElementById('audioResultado' + indexPregunta);
 
     div_audio.append(btn_eliminar);
@@ -129,7 +139,8 @@ function guardarAudio(){
             alert('Ingrese su respuesta...');
         }
         indexPregunta++;
-        cargarControles();
+        document.getElementById('divPregunta' + (indexPregunta - 1)).style.backgroundColor = 'lightgray';
+        cargarComponentes();
     }
 }
 
@@ -164,7 +175,7 @@ function encenderBarraProgreso() {
         porcentaje.innerHTML = segundosBarraProgreso + 's';
         barraTemporizador.style.width = width + "%";
         } else {
-            porcentaje.innerHTML = '100%';
+            porcentaje.innerHTML = '30s';
             barraTemporizador.style.width = "100%";
             clearInterval(intervalo);
         }
