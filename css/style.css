@@ -1,18 +1,78 @@
 body{
+    background-color: lightsteelblue;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #div-cuerpo{
     width: 70%;
-    padding: 5px;
-    background-color: red;
+    background-color: white;
     margin-top: 50px;
+    padding-top: 20px;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
 }
 
-#divPregunta0, #divPregunta1, #divPregunta2 {
-    border: 4px solid black;
-    padding: 5px;
+#instruccion {
+    margin-left: 25px;
 }
+
+#divPregunta0, #divPregunta1, #divPregunta2, #divPregunta3, #divPregunta4,
+#completado {
+    padding: 20px;
+    background-color: lightgray;
+}
+
+#divPregunta0 > span, #divPregunta1 > span, #divPregunta2 > span, #divPregunta3 > span, #divPregunta4 > span, 
+#completado > span {
+    margin: 5px;
+ }
+
+ input[type='button']{
+    margin: 5px;
+    padding: 10px;
+    color: white;
+    border: none;
+    font-size: 15px;
+ }
+
+ input[type='button']:disabled{
+    background-color: darkslategrey;
+ }
+
+ input[value='Grabar']{
+    background-color: green;
+ }
+
+ input[value='Detener']{
+    background-color: red;
+ }
+
+ input[value='Guardar']{
+    background-color: orange;
+ }
+
+
+
+
+#barraProgreso {
+    width: calc(100% - 10px);
+    height: 20px;
+    background-color: #ddd;
+    margin: 5px;
+  }
+  
+  #barra-progreso0, #barra-progreso1, #barra-progreso2 {
+    width: 0%;
+    height: 20px;
+    background-color: tomato;
+  }
+
+  #porcentaje0,#porcentaje1,#porcentaje2 {
+      margin: 0;
+      padding: 2px;
+  }

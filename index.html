@@ -6,76 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css"/>
     <title>Cuestionario</title>
-</head>
-<body>
+</head><body>
     <div id="div-cuerpo">
-        <span>Tiene 30 segundos para comentar su respuesta...</span>
+        <span id="instruccion">Responda correctamente cada pregunta grabando su voz...</span>
+
         <div id="divPregunta0">
-
-            <span>Mencione la edad de Gary: </span>
-
-            <div id="myProgress">
+            <span>1. ¿Qué es JavaScript? </span>
+            <div id="barraProgreso">
                 <div id="barra-progreso0"><p id="porcentaje0">0%</p></div>
             </div>
             <input type="button" value="Grabar" id="btn-grabar0" disabled/>
             <input type="button" value="Detener" id="btn-detener0" disabled/>
-            <input type="button" value="Enviar respuesta" id="btn-enviar0" disabled/>
+            <input type="button" value="Guardar" id="btn-enviar0" disabled/>
             <div id="audioResultado0"></div>
-
         </div>
 
         <div id="divPregunta1">
-
-            <span>Zabdy y Alan tienen un perrito llamado... : </span>
-
-            <div id="myProgress">
+            <span>2. Mencione las diferencias entre Java y JavaScript </span>
+            <div id="barraProgreso">
                 <div id="barra-progreso1"><p id="porcentaje1">0%</p></div>
             </div>
             <input type="button" value="Grabar" id="btn-grabar1" disabled/>
             <input type="button" value="Detener" id="btn-detener1" disabled/>
-            <input type="button" value="Enviar respuesta" id="btn-enviar1" disabled/>
+            <input type="button" value="Guardar" id="btn-enviar1" disabled/>
             <div id="audioResultado1"></div>
-
         </div>
 
         <div id="divPregunta2">
-
-            <span>Gary es un ...: </span>
-
-            <div id="myProgress">
+            <span>3. ¿Cuales son los tipos de datos JavaScript?</span>
+            <div id="barraProgreso">
                 <div id="barra-progreso2"><p id="porcentaje2">0%</p></div>
             </div>
             <input type="button" value="Grabar" id="btn-grabar2" disabled/>
             <input type="button" value="Detener" id="btn-detener2" disabled/>
-            <input type="button" value="Enviar respuesta" id="btn-enviar2" disabled/>
+            <input type="button" value="Guardar" id="btn-enviar2" disabled/>
             <div id="audioResultado2"></div>
-
         </div>
+
+        <div id="divPregunta3">
+            <span>3. ¿Cuales son los tipos de datos JavaScript?</span>
+            <div id="barraProgreso">
+                <div id="barra-progreso3"><p id="porcentaje3">0%</p></div>
+            </div>
+            <input type="button" value="Grabar" id="btn-grabar3" disabled/>
+            <input type="button" value="Detener" id="btn-detener3" disabled/>
+            <input type="button" value="Guardar" id="btn-enviar3" disabled/>
+            <div id="audioResultado3"></div>
+        </div>
+
+        <div id="divPregunta4">
+            <span>3. ¿Cuales son los tipos de datos JavaScript?</span>
+            <div id="barraProgreso">
+                <div id="barra-progreso4"><p id="porcentaje4">0%</p></div>
+            </div>
+            <input type="button" value="Grabar" id="btn-grabar4" disabled/>
+            <input type="button" value="Detener" id="btn-detener4" disabled/>
+            <input type="button" value="Guardar" id="btn-enviar4" disabled/>
+            <div id="audioResultado4"></div>
+        </div>
+
+        <!-- PUEDE COLOCAR UNA SIGUIENTE PREGUNTA AQUI -->
 
         <div id="completado">
             <span id="mensajeFinal"></span>
         </div>
     </div>
-    <!-- <script type="text/javascript" src="script.js"></script> -->
-
-    <style>
-        #myProgress {
-          width: 100%;
-          background-color: #ddd;
-        }
-        
-        #barra-progreso0, #barra-progreso1, #barra-progreso2 {
-          width: 1%;
-          height: 30px;
-          background-color: #04AA6D;
-        }
-
-        #porcentaje0,#porcentaje1,#porcentaje2 {
-            margin: 0;
-            padding: 5px;
-        }
-        </style>
-
 
     <script type="module" src="./scripts/principal.js"></script>
 </body>
